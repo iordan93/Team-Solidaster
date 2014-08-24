@@ -30,6 +30,7 @@ if (strpos($request, REQUEST_HOME) === 0) {
         $parameters = preg_split('/\//', $parameters, 0, PREG_SPLIT_NO_EMPTY);
     }
 
+    include_once "controllers/HomeController.php";
     $controllerFileName = "controllers/" . ucfirst($controller) . "Controller.php";
     if (file_exists($controllerFileName)) {
         include_once $controllerFileName;
@@ -42,7 +43,6 @@ if (strpos($request, REQUEST_HOME) === 0) {
             call_user_func_array(array($controllerInstance, "index"), array());
         }
     } else {
-        include_once "controllers/HomeController.php";
         $controllerInstance = new \Controllers\HomeController();
         $controllerInstance->index();
     }
