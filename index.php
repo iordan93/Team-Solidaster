@@ -3,7 +3,7 @@ include_once "config/constants.php";
 include_once "config/bootstrap.php";
 include_once "lib/bootstrap.php";
 
-define("ROOT_DIR", dirname(__FILE__) . DS);
+define("ROOT_DIR", dirname(__FILE__) . "\\");
 define("ROOT_PATH", basename(dirname(__FILE__)) . DS);
 define("REQUEST_HOME", DS . ROOT_PATH);
 define("ROOT_URL", "http://" . $_SERVER['HTTP_HOST']);
