@@ -32,6 +32,7 @@ if (strpos($request, REQUEST_HOME) === 0) {
     }
 
     include_once "controllers/HomeController.php";
+    include_once "models/BaseModel.php";
     $controllerFileName = "controllers/" . ucfirst($controller) . "Controller.php";
     if (file_exists($controllerFileName)) {
         include_once $controllerFileName;

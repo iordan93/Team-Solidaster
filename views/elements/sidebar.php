@@ -7,7 +7,7 @@
             <ul class="list-group">
                 <?php
                 for ($i = 1; $i <= 5; $i++) {
-                    echo "<li class=\"list-group-item\"><a href=\"#\">List item</a> <span class='badge'>{$i}</span> </li>";
+                    echo "<li class=\"list-group-item\"><span class='badge'>{$i}</span><a href=\"#\">List item</a></li>";
                 }
                 ?>
             </ul>

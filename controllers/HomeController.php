@@ -1,6 +1,8 @@
 <?php
 namespace Controllers;
 
+use Models\BaseModel;
+
 class HomeController
 {
     public $layout;
@@ -30,6 +32,11 @@ class HomeController
     {
         $templateFileName = ROOT_DIR . $this->viewsDirectory . "index.php";
         $pageTitle = "Home";
+
+        $db = new BaseModel(array(
+            "table" => "users"));
+        var_dump($db->getAll());
+
         require_once $this->layout;
     }
 

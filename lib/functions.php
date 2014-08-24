@@ -14,3 +14,12 @@ function endsWith($haystack, $needle)
 
     return (substr($haystack, -$length) === $needle);
 }
+
+function mergeKeysAndValues($array, $separator = " ") {
+    $result = array();
+    foreach ($array as $key => $value) {
+        $result[] = "{$key}{$separator}{$value}";
+    }
+
+    return $result;
+}
