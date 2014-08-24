@@ -35,8 +35,7 @@ class HomeController
 
         $db = new BaseModel(array(
             "table" => "users"));
-        var_dump($db->delete(13));
-
+        $users = $db->getAll();
         require_once $this->layout;
     }
 

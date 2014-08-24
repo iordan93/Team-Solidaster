@@ -1,6 +1,6 @@
 <?php
 include_once "config/constants.php";
-include_once "config/bootstrap.php";
+include_once "config/db.php";
 include_once "lib/bootstrap.php";
 
 define("ROOT_DIR", dirname(__FILE__) . "\\");
