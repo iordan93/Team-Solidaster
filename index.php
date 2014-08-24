@@ -7,6 +7,7 @@ define("ROOT_DIR", dirname(__FILE__) . "\\");
 define("ROOT_PATH", basename(dirname(__FILE__)) . DS);
 define("REQUEST_HOME", DS . ROOT_PATH);
 define("ROOT_URL", "http://" . $_SERVER['HTTP_HOST']);
+define("ABS_ROOT_URL", ROOT_URL . DS .ROOT_PATH);
 
 $request = $_SERVER["REQUEST_URI"];
 if (strpos($request, REQUEST_HOME) === 0) {
