@@ -61,7 +61,38 @@ class BaseModel
         return $this->dbConnection->affected_rows;
     }
 
-    // <editor-fold name="Private members" defaultState="collapsed">
+    public function update($arguments)
+    {
+        if (!isset($arguments["id"])) {
+            die("No id specified to update.");
+        }
+
+        $query = "update {$this->table} set ";
+        foreach ($arguments as $key => $value) {
+            if ($key == "id") {
+                continue;
+            }
+
+            $query .= "{$key} = '" . $this->dbConnection->real_escape_string($value) . "',  ";
+        }
+
+        $query = rtrim($query, ", ");
+        $query .= " where id = " . $arguments["id"];
+        $this->dbConnection->query($query);
+        return $this->dbConnection->affected_rows;
+    }
+
+    public function delete($id) {
+        if(!is_int($id)) {
+            die("Incorrect id specified to delete.");
+        }
+
+        $query = "delete from {$this->table} where id = {$id}";
+        $this->dbConnection->query($query);
+        return $this->dbConnection->affected_rows;
+    }
+
+   // <editor-fold name="Private members" defaultstate="collapsed">
     private function buildQuery($arguments)
     {
         if (is_array($arguments["columns"])) {
