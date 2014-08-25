@@ -3,16 +3,15 @@ namespace Models;
 
 use \Lib\Database;
 
-class BaseModel
+abstract class BaseModel
 {
-    // <editor-fold name="Properties">
+    // <editor-fold name="Properties" defaultstate="collapsed">
     public $dbConnection;
 
     public $table;
     public $columns;
     public $where;
     public $limit;
-
     //</editor-fold>
 
     public function __construct($arguments = array())

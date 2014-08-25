@@ -1,16 +1,10 @@
 <?php
 namespace Controllers;
 
-class ValuesController extends HomeController
+class ValuesController extends BaseController
 {
-    public $layout;
-    public $viewsDirectory;
-
-
-    public function __construct(
-            $viewsDirectory = "",
-            $layout = "") {
-        parent::__construct($viewsDirectory, $layout);
+    public function __construct($viewsDirectory = "", $layout = "", $model = "", $auxModels = array()) {
+        parent::__construct($viewsDirectory, $layout, $model, $auxModels);
     }
 
    public function index() {
