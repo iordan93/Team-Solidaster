@@ -24,7 +24,7 @@ class ProfileController extends BaseController
                 "where" => "username = '{$_POST["username"]}'"
             ));
             if (!empty($oldUser)) {
-                $messages[] = array("danger" => "A user with this username already exists.");
+                $messages[] = array(1, "danger", "A user with this username already exists.");
             } else {
                 $user = array(
                     "username" => $_POST["username"],
@@ -33,15 +33,15 @@ class ProfileController extends BaseController
                 );
 
                 $auth->register($user["username"], $user["password"], $user["email"], "user");
-                $messages[] = array("success" => "User successfully registered.");
                 $auth->login($user["username"], $user["password"]);
+                $messages[] = array(1, "success", "User registered successfully.");
                 header("Location: " . ABS_ROOT_URL);
             }
         }
 
         $templateFileName = ROOT_DIR . $this->viewsDirectory . "register.php";
         $pageTitle = "Register";
-        require_once $this->layout;
         $_SESSION["messages"] = $messages;
+        require_once $this->layout;
     }
 } 
