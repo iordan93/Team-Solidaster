@@ -124,7 +124,7 @@ abstract class BaseModel
 
                 $arguments["where"] = $whereAsString;
             } else {
-                $arguments["where"] = $this->dbConnection->real_escape_string($arguments["where"]);
+                // $arguments["where"] = $this->dbConnection->real_escape_string($arguments["where"]);
             }
 
             $query .= " where {$arguments["where"]}";

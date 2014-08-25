@@ -2,14 +2,7 @@
 namespace Lib;
 
 class Auth {
-    private static $DEFAULT_COOKIE_LIFETIME = 36000;
-
-    private static $session;
-
     private function __construct(){
-
-        session_set_cookie_params(self::$DEFAULT_COOKIE_LIFETIME, "/");
-        session_start();
     }
 
     public static function getInstance(){
@@ -17,19 +10,36 @@ class Auth {
         if($instance == null) {
             $instance = new static();
         }
+
+        return $instance;
     }
 
     public static function isAuthenticated(){
         return isset ($_SESSION[KEY_USERNAME]);
     }
 
+    public static function register($username, $password, $email = "", $role = "user") {
+        $database = Database::getDatabase();
+        $statement = $database->prepare("insert into users (username, password, email, role) values (?, MD5(?), ?, ?)");
+        $statement->bind_param("ssss", $username, $password, $email, $role);
+        $statement->execute();
+        return $statement->affected_rows != 0;
+    }
+
     public static function login($username, $password) {
         $database = Database::getDatabase();
-        $statement = $database->prepare("SELECT id, username FROM users WHERE username = ? AND password = MD5(?) LIMIT 1");
+        $statement = $database->prepare("select id, username from users where username = ? and password = MD5(?) LIMIT 1");
         $statement->bind_param("ss", $username, $password);
         $statement->execute();
         $resultSet = $statement->get_result();
 
+        if ($row = $resultSet->fetch_assoc()) {
+            $_SESSION[KEY_USERNAME] = $row["username"];
+            $_SESSION[KEY_USER_ID] = $row["id"];
+            return true;
+        }
+
+        return false;
     }
 
     public function getAuthenticatedUser(){

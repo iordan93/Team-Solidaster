@@ -1,18 +1,17 @@
 <?php
 namespace Controllers;
 
-use Models\BaseModel;
-
 class HomeController extends BaseController
 {
+    public function __construct($viewsDirectory = "", $layout = "", $model = "", $auxModels = array())
+    {
+        parent::__construct($viewsDirectory, $layout, $model, $auxModels);
+    }
+
     public function index()
     {
         $templateFileName = ROOT_DIR . $this->viewsDirectory . "index.php";
         $pageTitle = "Home";
-
-//        $db = new BaseModel(array(
-//            "table" => "users"));
-//        $users = $db->getAll();
         require_once $this->layout;
     }
 

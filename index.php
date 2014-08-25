@@ -1,9 +1,13 @@
 <?php
 mb_internal_encoding("utf-8");
+define("DEFAULT_COOKIE_LIFETIME", 36000);
+session_set_cookie_params(DEFAULT_COOKIE_LIFETIME, "/");
+session_start();
 
 include_once "config/constants.php";
 include_once "config/db.php";
 include_once "lib/bootstrap.php";
+include_once "lib/auth.php";
 
 define("ROOT_DIR", dirname(__FILE__) . "\\");
 define("ROOT_PATH", basename(dirname(__FILE__)) . DS);
@@ -35,6 +39,7 @@ if (strpos($request, REQUEST_HOME) === 0) {
 
     include_once "controllers/BaseController.php";
     include_once "models/BaseModel.php";
+
     $controllerFileName = "controllers/" . ucfirst($controller) . "Controller.php";
     if (file_exists($controllerFileName)) {
         include_once $controllerFileName;

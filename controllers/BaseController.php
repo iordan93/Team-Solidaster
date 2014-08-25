@@ -25,7 +25,9 @@ abstract class BaseController
         require_once "models/BaseModel.php";
 
         if (empty($model)) {
-            $this->loadModelFile($className);
+            $this->model = $this->loadModelFile($className);
+        } else {
+            $this->model = $this->loadModelFile($model);
         }
 
         if (is_array($auxModels)) {
@@ -40,9 +42,14 @@ abstract class BaseController
 
     private function loadModelFile($className)
     {
-        $modelFileName = ROOT_DIR . "models/" . ucfirst(substr($className, 0, strlen($className) - 1)) . "Model.php";
+        $canonicalModelName = ucfirst($className) . "Model";
+        $modelFileName = ROOT_DIR . "models/{$canonicalModelName}.php";
+
         if (file_exists($modelFileName)) {
             require_once $modelFileName;
         }
+
+        $instance = "\\Models\\$canonicalModelName";
+        return new $instance();
     }
 } 
