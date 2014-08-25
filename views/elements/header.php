@@ -12,5 +12,23 @@
 </head>
 <body>
 <header>
-    <h1>This is the title of the site</h1>
+    <div class="navbar navbar-inverse">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse navbar-inverse-collapse">
+            <form class="navbar-form navbar-left">
+                <input type="text" class="form-control col-lg-8" placeholder="Username">
+                <input type="password" class="form-control col-lg-8" placeholder="Password">
+                <input class="btn btn-primary" type="submit" name="commit" value="Login">
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="#">Register</a></li>
+            </ul>
+        </div>
+    </div>
 </header>

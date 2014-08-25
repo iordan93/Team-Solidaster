@@ -1,4 +1,4 @@
-<aside id="sidebar-home" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+<aside id="sidebar-home" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
     <div class="sidebar">
         <header>
             <h3>Sidebar Title</h3>
