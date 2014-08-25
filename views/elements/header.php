@@ -21,14 +21,29 @@
             </button>
         </div>
         <div class="navbar-collapse collapse navbar-inverse-collapse">
-            <form class="navbar-form navbar-left">
-                <input type="text" class="form-control col-lg-8" placeholder="Username">
-                <input type="password" class="form-control col-lg-8" placeholder="Password">
-                <input class="btn btn-primary" type="submit" name="commit" value="Login">
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#">Register</a></li>
-            </ul>
+            <?php
+                $auth = \Lib\Auth::getInstance();
+                if($auth->isAuthenticated()){
+                    echo "
+                        <ul class=\"nav nav-pills\">
+                          <li class=\"active\"><a href=\"#\">Home <span class=\"badge\">42</span></a></li>
+                          <li class=\"active\"><a href=\"#\">Profile <span class=\"badge\"></span></a></li>
+                          <li class=\"active\"><a href=\"#\">????? <span class=\"badge\">3</span></a></li>
+                          <li class=\"active\"><a href=\"#\">Logout</a></li>
+                        </ul>";
+                }
+                else{
+                    echo "
+                        <form class=\"navbar-form navbar-left\">
+                            <input type=\"text\" class=\"form-control col-lg-8\" placeholder=\"Username\">
+                            <input type=\"password\" class=\"form-control col-lg-8\" placeholder=\"Password\">
+                            <input class=\"btn btn-primary\" type=\"submit\" name=\"commit\" value=\"Login\">
+                        </form>
+                        <ul class=\"nav navbar-nav navbar-right\">
+                            <li class=\"active\"><a href=\"#\">Register</a></li>
+                        </ul>";
+                }
+            ?>
         </div>
     </div>
 </header>

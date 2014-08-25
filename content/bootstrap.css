@@ -3678,6 +3678,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
         border-bottom-color: #ffffff;
     }
 }
+.nav-pills{
+    margin-top: 10px;
+}
+.nav-pills > li:last-child{
+    float: right;
+}
 .nav-pills > li {
     float: left;
 }
