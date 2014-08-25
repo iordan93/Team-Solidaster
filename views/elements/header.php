@@ -29,7 +29,7 @@
                           <li class=\"active\"><a href=\"#\">Home <span class=\"badge\">42</span></a></li>
                           <li class=\"active\"><a href=\"#\">Profile <span class=\"badge\"></span></a></li>
                           <li class=\"active\"><a href=\"#\">????? <span class=\"badge\">3</span></a></li>
-                          <li class=\"active\"><a href=\"#\">Logout</a></li>
+                          <li class=\"active\"><a href=\"#\"><span class=\"glyphicon glyphicon-log-out\"> Logout</a></span></li>
                         </ul>";
                 }
                 else{
