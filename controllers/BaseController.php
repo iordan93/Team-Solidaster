@@ -1,7 +1,8 @@
 <?php
 namespace Controllers;
 
-abstract class BaseController {
+abstract class BaseController
+{
     public $layout;
     public $viewsDirectory;
     public $model;
@@ -22,13 +23,14 @@ abstract class BaseController {
         }
 
         require_once "models/BaseModel.php";
-        if(empty($model)){
-            $this->loadModelFile($model, $className);
+
+        if (empty($model)) {
+            $this->loadModelFile($className);
         }
 
-        if(is_array($auxModels)){
+        if (is_array($auxModels)) {
             foreach ($auxModels as $model) {
-                $this->loadModelFile($model, $className);
+                $this->loadModelFile($model);
             }
         }
 
@@ -36,9 +38,10 @@ abstract class BaseController {
         $this->viewsDirectory = $viewsDirectory;
     }
 
-    private function loadModelFile($model, $className) {
-        $modelFileName = ROOT_DIR . "models/".ucfirst($className)."Model.php";
-        if(file_exists($modelFileName)){
+    private function loadModelFile($className)
+    {
+        $modelFileName = ROOT_DIR . "models/" . ucfirst(substr($className, 0, strlen($className) - 1)) . "Model.php";
+        if (file_exists($modelFileName)) {
             require_once $modelFileName;
         }
     }
