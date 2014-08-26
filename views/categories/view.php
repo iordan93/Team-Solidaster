@@ -1,5 +1,4 @@
 <div class="col-sm-12 clearfix">
-    <ul>
 
         <div class="well">
             <h2>
@@ -13,7 +12,7 @@
 
         <?php foreach ($questions as $question) {
             ?>
-            <li>
+
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <a href="<?= ABS_ROOT_URL ?>questions/details/<?= $question['id'] ?>">
@@ -28,11 +27,10 @@
 
                     </div>
                 </div>
-            </li>
+
         <?php
         }
         ?>
 
-    </ul>
 </div>
 <?php
