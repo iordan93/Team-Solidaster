@@ -21,7 +21,7 @@
             </button>
         </div>
         <div class="navbar-collapse collapse navbar-inverse-collapse">
-            <a class="navbar-brand" href="#">SOLID(is)ASTER</a>
+            <a class="navbar-brand" href="#">SOLID(dis)ASTER</a>
             <?php
             $auth = \Lib\Auth::getInstance();
             if ($auth->isAuthenticated()): ?>
