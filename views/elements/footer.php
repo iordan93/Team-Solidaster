@@ -1,3 +1,5 @@
 <footer class="clearfix">
-    &copy; <?= date("Y") ?> Team Solidaster
+    <div class="footer">
+        &copy; <?= date("Y") ?> Team Solidaster
+    </div>
 </footer>
