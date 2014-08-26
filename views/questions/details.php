@@ -1,40 +1,46 @@
-<ul>
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h3 class="panel-title"><strong><?= $question['question'][0]['author'] ?></strong><span><em>
-                        asked: </em></span><?= $question['question'][0]['title'] ?></h3>
-        </div>
-        <div class="panel-body">
-            <?= $question['question'][0]['text'] ?>
-        </div>
-        <div class="panel-footer">
-            <span class="label label-default"><?= $question['question'][0]['time_created'] ?></span>
-            <span class="label label-warning">votes: <?= $question['question'][0]['vote_result'] ?></span>
-            <span class="label label-primary">category: <?= $question['question'][0]['category'] ?></span>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title"><span
+                class="glyphicon glyphicon-user"></span><strong> <?= $question['question'][0]['author'] ?></strong><span><em>
+                    asked: </em></span><?= $question['question'][0]['title'] ?></h3>
+    </div>
+    <div class="panel-body">
+        <?= $question['question'][0]['text'] ?>
+    </div>
+    <div class="panel-footer">
+        <span class="glyphicon glyphicon-time"></span>
+        <span class="label label-default"><?= $question['question'][0]['time_created'] ?></span>
 
-            <p class="text-info">tags: <?php
+        <span class="glyphicon glyphicon-book"></span> <span
+            class="label label-primary"><?= $question['question'][0]['category'] ?></span>
+
+<!--        to-be removed-->
+        <span class="label label-warning">votes: <?= $question['question'][0]['vote_result'] ?></span>
+
+        <p class="text-info">
+            <span class="glyphicon glyphicon-tags"></span> <span>
+                <?php
                 foreach ($question['tags'] as $tag) : ?>
                     <span class="label label-info"><?= $tag['name'] ?></span>
                 <?php
-                endforeach ?>
-            </p>
+                endforeach ?></span>
+        </p>
+    </div>
+</div>
+<?php foreach ($question['answers'] as $answer) :
+    ?>
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title"><span class="glyphicon glyphicon-user"></span>
+                <strong><?= $answer['username'] ?></strong><span><em> answered:</em></span></h3>
+        </div>
+
+
+        <div class="panel-body">
+            <?= $answer['text'] ?>
+        </div>
+        <div class="panel-footer">
+            <span class="glyphicon glyphicon-time"></span> <span class="label label-default"><?= $answer['time_created'] ?></span>
         </div>
     </div>
-    <?php foreach ($question['answers'] as $answer) :
-        ?>
-        <div class="panel panel-success">
-            <div class="panel-heading">
-                <h3 class="panel-title"><strong><?= $answer['username'] ?></strong><span><em> answered:</em></span></h3>
-            </div>
-
-
-            <div class="panel-body">
-                <?= $answer['text'] ?>
-            </div>
-            <div class="panel-footer">
-                <span class="label label-default"><?= $answer['time_created'] ?></span>
-            </div>
-        </div>
-    <?php endforeach; ?>
-
-</ul>
+<?php endforeach; ?>
