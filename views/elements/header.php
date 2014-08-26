@@ -1,3 +1,11 @@
+<?php
+include_once "models/QuestionModel.php";
+$model = new \Models\QuestionModel();
+$result = $model->getAll(array(
+    "columns" => "count(*)"
+));
+$count = intval($result[0]["count(*)"])
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -33,7 +41,7 @@
             if ($auth->isAuthenticated()): ?>
                 <ul class="nav nav-pills">
                     <li class="active"><a href="<?=ABS_ROOT_URL ."questions/add"?>">Add new question </a></li>
-                    <li class="active"><a href="<?=ABS_ROOT_URL ."home/index"?>">Home <span class="badge">42</span></a></li>
+                    <li class="active"><a href="<?=ABS_ROOT_URL ."home/index"?>">Home <span class="badge"><?= $count ?></span></a></li>
                     <li class="active"><a href="#">Profile</a></li>
                     <li class="active"><a href="<?= ABS_ROOT_URL ?>profile/logout">Logout <span class="glyphicon glyphicon-log-out"></a></span></li>
                 </ul>
