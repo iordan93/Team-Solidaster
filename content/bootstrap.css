@@ -3681,7 +3681,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-pills{
     margin-top: 10px;
 }
-.nav-pills > li:last-child{
+.nav-pills {
     float: right;
 }
 .nav-pills > li {

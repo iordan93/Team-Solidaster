@@ -17,9 +17,7 @@ $model = $controller->all();
                         "<a href=\"" . ABS_ROOT_URL . "categories/view/{$category["id"]}\">{$category["name"]}</a></li>";
                 }
                 ?>
-                <li class="list-group-item"><a href="<?=ABS_ROOT_URL ."categories/add"?>">Add Category</a></li>
-                <li class="list-group-item"><a href="<?=ABS_ROOT_URL ."questions/add"?>">Add Question</a></li>
-
+                    <li class="list-group-item"><a href="<?=ABS_ROOT_URL ."categories/add"?>">Add Category !!!!!</a></li>
             </ul>
         </main>
     </div>

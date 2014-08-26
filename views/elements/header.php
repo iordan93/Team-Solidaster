@@ -21,23 +21,26 @@
             </button>
         </div>
         <div class="navbar-collapse collapse navbar-inverse-collapse">
+            <a class="navbar-brand" href="#">SOLID(is)ASTER</a>
             <?php
             $auth = \Lib\Auth::getInstance();
             if ($auth->isAuthenticated()): ?>
                 <ul class="nav nav-pills">
+                    <li class="active"><a href="#">Add new question </a></li>
                     <li class="active"><a href="#">Home <span class="badge">42</span></a></li>
-                    <li class="active"><a href="#">Profile <span class="badge"></span></a></li>
-                    <li class="active"><a href="#">????? <span class="badge">3</span></a></li>
-                    <li class="active"><a href="profile/logout"><span class="glyphicon glyphicon-log-out">Logout</a></span></li>
+                    <li class="active"><a href="#">Profile</a></li>
+                    <li class="active"><a href="profile/logout">Logout <span class="glyphicon glyphicon-log-out"></a></span></li>
                 </ul>
 
             <?php else: ?>
-                <form class="navbar-form navbar-left" method="post" action="<?= ABS_ROOT_URL ?>profile/login">
-                    <input type="text" name="loginUsername" required class="form-control col-lg-8" placeholder="Username">
-                    <input type="password" name="loginPassword" required class="form-control col-lg-8" placeholder="Password">
-                    <input class="btn btn-primary" type="submit" name="commit" value="Login">
-                </form>
                 <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <form class="navbar-form navbar-left" method="post" action="profile/login">
+                            <input type="text" name="loginUsername" required class="form-control col-lg-8" placeholder="Username">
+                            <input type="password" name="loginPassword" required class="form-control col-lg-8" placeholder="Password">
+                            <input class="btn btn-primary" type="submit" name="commit" value="Login">
+                        </form>
+                    </li>
                     <li class="active"><a href="<?= ABS_ROOT_URL ?>profile/register">Register</a></li>
                 </ul>
             <?php endif; ?>
