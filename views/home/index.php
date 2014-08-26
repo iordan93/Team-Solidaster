@@ -1,10 +1,10 @@
-<?php foreach ($questions as $question) { ?>
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <a href="<?= ABS_ROOT_URL ?>questions/details/<?= $question['id'] ?>">
-                <h4><?= $question['title'] ?></h4>
-            </a>
-
+<?php foreach ($questions as $question) {
+    ?>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <a href="<?= ABS_ROOT_URL ?>questions/details/<?= $question['id'] ?>">
+                        <h4><?= $question['title'] ?></h4>
+                    </a>
         </div>
         <div class="panel-body">
             <div>

@@ -42,7 +42,7 @@ $count = intval($result[0]["count(*)"])
                 <ul class="nav nav-pills">
                     <li class="active"><a href="<?=ABS_ROOT_URL ."questions/add"?>">Add new question </a></li>
                     <li class="active"><a href="<?=ABS_ROOT_URL ."home/index"?>">Home <span class="badge"><?= $count ?></span></a></li>
-                    <li class="active"><a href="#">Profile</a></li>
+                    <li class="active"><a href="<?= ABS_ROOT_URL ?>profile/show/<?= $_SESSION[KEY_USER_ID] ?>">Hello, <?= $_SESSION[KEY_USERNAME] ?>!</a></li>
                     <li class="active"><a href="<?= ABS_ROOT_URL ?>profile/logout">Logout <span class="glyphicon glyphicon-log-out"></a></span></li>
                 </ul>
 
