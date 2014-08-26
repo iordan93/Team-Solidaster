@@ -5,7 +5,7 @@ use Lib\Auth;
 
 class ProfileController extends BaseController
 {
-    public function __construct($viewsDirectory = "", $layout = "", $model = "user", $auxModels = array())
+    public function __construct($viewsDirectory = "", $layout = "", $model = "user", $auxModels = array("question", "answer", "comment"))
     {
         parent::__construct($viewsDirectory, $layout, $model, $auxModels);
     }
@@ -78,6 +78,29 @@ class ProfileController extends BaseController
         if ($auth->isAuthenticated()) {
             $auth->logout();
             header("Location: " . ABS_ROOT_URL);
+        }
+    }
+
+    public function show($id)
+    {
+        $user = $this->model->getById($id);
+        if (empty($user)) {
+            $_SESSION["messages"][] = array(1, "danger", "There is no such user.");
+            header("Location: " . ABS_ROOT_URL);
+        } else {
+            $questions = $this->auxModels[0]->getAll(array(
+                "where" => "user_id = {$id}"
+            ));
+                $answers = $this->auxModels[1]->getAll(array(
+                    "where" => "users_id = {$id}"
+                ));
+            $comments = $this->auxModels[2]->getAll(array(
+                "where" => "user_id = {$id}"
+            ));
+
+            $templateFileName = ROOT_DIR . $this->viewsDirectory . "show.php";
+            $pageTitle = "User {$user["username"]}";
+            require_once $this->layout;
         }
     }
 } 

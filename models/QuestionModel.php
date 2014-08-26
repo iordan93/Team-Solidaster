@@ -15,7 +15,7 @@ class QuestionModel extends BaseModel
     public function getConciseDisplay()
     {
         $query = "SELECT q.id AS id, q.title AS title, q.time_created AS time_created, q.times_viewed,
-        q.vote_result AS vote_result, u.username AS author, (SELECT COUNT(1) AS A1 FROM answers AS a WHERE q.id = a.questions_id)AS answers_count,
+        q.vote_result AS vote_result, u.username, u.id as user_id AS author, (SELECT COUNT(1) AS A1 FROM answers AS a WHERE q.id = a.questions_id)AS answers_count,
         c.name AS category, c.id as category_id FROM questions AS q INNER JOIN categories AS c ON q.category_id = c.id INNER JOIN users AS u on q.user_id = u.id";
         $resultSet = $this->dbConnection->query($query);
         return self::processResults($resultSet);
@@ -44,7 +44,8 @@ order by q.id) as tags";
         $query = "select a.text, a.time_created, u.username
 from answers as a
 join users as u
-on a.users_id = u.id";
+on a.users_id = u.id
+where a.questions_id = {$id}";
         $answers = self::processResults($this->dbConnection->query($query));
 
         $this->update(array("id" => $id, "times_viewed" => "times_viewed + 1"), false);
