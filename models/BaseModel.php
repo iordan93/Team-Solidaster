@@ -12,6 +12,7 @@ abstract class BaseModel
     public $columns;
     public $where;
     public $limit;
+
     //</editor-fold>
 
     public function __construct($arguments = array())
@@ -40,8 +41,8 @@ abstract class BaseModel
 
     public function getById($id, $arguments = array())
     {
-            $arguments = array_merge($arguments, array("where" => "id = {$id}"));
-            return $this->getAll($arguments)[0];
+        $arguments = array_merge($arguments, array("where" => "id = {$id}"));
+        return $this->getAll($arguments)[0];
     }
 
     public function insert($arguments)
@@ -56,7 +57,7 @@ abstract class BaseModel
         return $this->dbConnection->affected_rows;
     }
 
-    public function update($arguments)
+    public function update($arguments, $escape = false)
     {
         if (!isset($arguments["id"])) {
             die("No id specified to update.");
@@ -68,7 +69,11 @@ abstract class BaseModel
                 continue;
             }
 
-            $query .= "{$key} = '" . $this->dbConnection->real_escape_string($value) . "',  ";
+            if ($escape) {
+                $query .= "{$key} = '" . $this->dbConnection->real_escape_string($value) . "',  ";
+            } else {
+                $query .= "{$key} = " . $this->dbConnection->real_escape_string($value) . ",  ";
+            }
         }
 
         $query = rtrim($query, ", ");
@@ -77,8 +82,9 @@ abstract class BaseModel
         return $this->dbConnection->affected_rows;
     }
 
-    public function delete($id) {
-        if(!is_int($id)) {
+    public function delete($id)
+    {
+        if (!is_int($id)) {
             die("Incorrect id specified to delete.");
         }
 
@@ -87,7 +93,7 @@ abstract class BaseModel
         return $this->dbConnection->affected_rows;
     }
 
-   // <editor-fold name="Private members" defaultstate="collapsed">
+    // <editor-fold name="Private members" defaultstate="collapsed">
     private function buildQuery($arguments)
     {
         if (is_array($arguments["columns"])) {

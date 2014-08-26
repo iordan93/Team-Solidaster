@@ -45,7 +45,7 @@ from answers as a
 join users as u
 on a.users_id = u.id";
         $answers = self::processResults($this->dbConnection->query($query));
-
+        $this->update(array("id" => $id, "times_viewed" => "times_viewed + 1"), false);
         return array("question" => $question, "tags" => $tags, "answers" => $answers);
     }
 }

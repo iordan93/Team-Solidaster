@@ -29,6 +29,10 @@ class QuestionsController extends BaseController
     }
 
     public function add() {
+        if($_POST) {
+
+        }
+
         $templateFileName = ROOT_DIR . $this->viewsDirectory . "add.php";
         $pageTitle = "Add new question";
         require_once $this->layout;
