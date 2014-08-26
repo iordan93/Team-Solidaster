@@ -52,4 +52,9 @@ where a.questions_id = {$id}";
 
         return array("question" => $question, "tags" => $tags, "answers" => $answers);
     }
+
+    public function getWithUsers($id) {
+        $query = "select q.id, q.title, q.text, q.time_created, q.vote_result, q.times_viewed, u.username from questions as q join users as u on q.user_id = u.id where category_id = {$id}";
+        return self::processResults($this->dbConnection->query($query));
+    }
 }

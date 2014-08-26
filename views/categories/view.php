@@ -18,8 +18,8 @@
                 <div class="panel-heading">
                     <a href="<?= ABS_ROOT_URL ?>questions/details/<?= $question['id'] ?>">
                         <h4><strong>
-                                <span class="glyphicon glyphicon-user"> </span> *userID* =
-                                <?= $question['user_id'] ?>
+                                <span class="glyphicon glyphicon-user"> </span>
+                                <?= $question['username'] ?>
                             </strong>
                             <em> asked:
                                 <?= $question['title'] ?>
