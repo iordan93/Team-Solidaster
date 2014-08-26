@@ -38,7 +38,7 @@
                     <input class="btn btn-primary" type="submit" name="commit" value="Login">
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="profile/register">Register</a></li>
+                    <li class="active"><a href="<?= ABS_ROOT_URL ?>profile/register">Register</a></li>
                 </ul>
             <?php endif; ?>
         </div>
