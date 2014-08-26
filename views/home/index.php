@@ -1,3 +1,2 @@
-<div class="jumbotron">
-    This is the home controller index file.
-</div>
+<?php
+var_dump($questions);
