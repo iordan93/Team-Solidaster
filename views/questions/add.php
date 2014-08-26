@@ -1,38 +1,16 @@
-<div class="well bs-component">
-    <form method="post" class="form-horizontal">
-        <fieldset>
-            <legend>Add question</legend>
-            <div class="form-group">
-                <div class="col-lg-10">
-                    <input type="text" class="form-control"  name='title' placeholder="Title" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-lg-10">
-                    <textarea  class="form-control"  name='text' placeholder="Ask question.." required ></textarea>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-lg-10 ">
-                    <input type="text" class="form-control" name="tag" placeholder="Add tag" required/>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-lg-10">
-                    <select name="category" class="form-control">
-                        <option value="" selected disabled>Category</option>
-                        <option value="1">Computer networking</option>
-                        <option value="2">Software</option>
-                        <option value="3">Internet</option>
-                        <option value="4">Security</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-lg-10 col-lg-offset-2">
-                    <input type="submit" class="btn btn-primary" value="Add question"/>
-                </div>
-            </div>
-        </fieldset>
-    </form>
-</div>
+<form method="post">
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title" />
+    <label for="content">Content</label>
+    <textarea rows="10" name="content" id="content"></textarea>
+    <select name="categoryId">
+        <?php
+        foreach($categories as $category) {
+            echo "<option value='{$category["id"]}'>{$category["name"]}</option>";
+        }
+        ?>
+    </select>
+    <label for="tags">Tags</label>
+    <input type="text" name="tags" id="tags">
+    <input type="submit" value="Ask question"/>
+</form>

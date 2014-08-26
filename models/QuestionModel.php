@@ -21,7 +21,7 @@ class QuestionModel extends BaseModel
 
     public function getDetailsDisplay($id)
     {
-        $query = "select q.title, q.text, q.time_created,q.vote_result, c.name as category, u.username as author
+        $query = "select q.title, q.text, q.time_created,q.vote_result, c.id as category_id, c.name as category, u.username as author
 from questions as q
 join categories as c
 on q.category_id = c.id
@@ -45,7 +45,9 @@ from answers as a
 join users as u
 on a.users_id = u.id";
         $answers = self::processResults($this->dbConnection->query($query));
+
         $this->update(array("id" => $id, "times_viewed" => "times_viewed + 1"), false);
+
         return array("question" => $question, "tags" => $tags, "answers" => $answers);
     }
 }
