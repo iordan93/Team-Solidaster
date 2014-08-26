@@ -13,28 +13,6 @@ class QuestionsController extends BaseController
         header("Location: " . ABS_ROOT_URL);
     }
 
-//    public function add()
-//    {
-//        if ($_POST) {
-//            if ($this->model->insert(array(
-//                "title" => $_POST["title"],
-//                "text" => $_POST["text"],
-//                "tag" => $_POST["tag"],
-//                "category" => $_POST["category"],
-//            ))
-//            ) {
-//                $_SESSION["messages"][] = array(1, "success", "Successfully added new question!");
-//                header("Location: " . ABS_ROOT_URL);
-//            } else {
-//                $_SESSION["messages"][] = array(1, "danger", "Adding new question failed!");
-//            }
-//        }
-//
-//        $templateFileName = ROOT_DIR . $this->viewsDirectory . "add.php";
-//        $pageTitle = "Add Question";
-//        require_once $this->layout;
-//    }
-
     public function view()
     {
         $questions = $this->model->getAll();
@@ -47,6 +25,12 @@ class QuestionsController extends BaseController
         $question = $this->model->getDetailsDisplay($id);
         $templateFileName = ROOT_DIR . $this->viewsDirectory . "details.php";
         $pageTitle = "Question Details";
+        require_once $this->layout;
+    }
+
+    public function add() {
+        $templateFileName = ROOT_DIR . $this->viewsDirectory . "add.php";
+        $pageTitle = "Add new question";
         require_once $this->layout;
     }
 } 
