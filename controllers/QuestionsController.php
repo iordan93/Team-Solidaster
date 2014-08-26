@@ -13,14 +13,6 @@ class QuestionsController extends BaseController
         header("Location: " . ABS_ROOT_URL);
     }
 
-    public function view()
-    {
-        $questions = $this->model->getAll();
-        $templateFileName = ROOT_DIR . $this->viewsDirectory . "view.php";
-        $pageTitle = "View All Questions";
-        require_once $this->layout;
-    }
-
     public function details($id) {
         $question = $this->model->getDetailsDisplay($id);
         $templateFileName = ROOT_DIR . $this->viewsDirectory . "details.php";
@@ -29,6 +21,10 @@ class QuestionsController extends BaseController
     }
 
     public function add() {
+        if($_POST) {
+
+        }
+
         $templateFileName = ROOT_DIR . $this->viewsDirectory . "add.php";
         $pageTitle = "Add new question";
         require_once $this->layout;
