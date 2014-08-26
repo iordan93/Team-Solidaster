@@ -18,9 +18,9 @@
                     </div>
                     <hr/>
                     <div>
-<!--                        <div>-->
-<!--                            <form>vote!!!!!</form>-->
-<!--                        </div>-->
+                        <!--                        <div>-->
+                        <!--                            <form>vote!!!!!</form>-->
+                        <!--                        </div>-->
                         <div>
                             <span class="glyphicon glyphicon-ok"></span><?= $question['vote_result']?>
                             &nbsp;&nbsp;
@@ -31,6 +31,6 @@
                     </div>
                 </div>
             </div>
-    <?php
-    }
-    ?>
+<?php
+}
+?>

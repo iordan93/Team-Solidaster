@@ -21,13 +21,13 @@
             </button>
         </div>
         <div class="navbar-collapse collapse navbar-inverse-collapse">
-            <a class="navbar-brand" href="#">SOLID(dis)ASTER</a>
+            <a class="navbar-brand" href="<?=ABS_ROOT_URL ."home/index"?>">SOLID(is)ASTER</a>
             <?php
             $auth = \Lib\Auth::getInstance();
             if ($auth->isAuthenticated()): ?>
                 <ul class="nav nav-pills">
-                    <li class="active"><a href="#">Add new question </a></li>
-                    <li class="active"><a href="#">Home <span class="badge">42</span></a></li>
+                    <li class="active"><a href="<?=ABS_ROOT_URL ."questions/add"?>">Add new question </a></li>
+                    <li class="active"><a href="<?=ABS_ROOT_URL ."home/index"?>">Home <span class="badge">42</span></a></li>
                     <li class="active"><a href="#">Profile</a></li>
                     <li class="active"><a href="profile/logout">Logout <span class="glyphicon glyphicon-log-out"></a></span></li>
                 </ul>

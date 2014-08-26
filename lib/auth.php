@@ -1,6 +1,8 @@
 <?php
 namespace Lib;
 
+use Models\UserModel;
+
 class Auth {
     private function __construct(){
     }
@@ -16,6 +18,17 @@ class Auth {
 
     public static function isAuthenticated(){
         return isset ($_SESSION[KEY_USERNAME]);
+    }
+
+    public static function isAdmin() {
+        if (!self::isAuthenticated()) {
+            return false;
+        }
+
+        include_once "models/UserModel.php";
+        $model = new UserModel();
+        $user = $model->getById($_SESSION[KEY_USER_ID]);
+        return $user["role"] == "admin";
     }
 
     public static function register($username, $password, $email = "", $role = "user") {
