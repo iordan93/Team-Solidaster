@@ -1,25 +1,28 @@
 <?php
 namespace Controllers;
 
-
-class QuestionsController extends BaseController {
+class QuestionsController extends BaseController
+{
     public function __construct($viewsDirectory = "", $layout = "", $model = "question", $auxModels = array())
     {
         parent::__construct($viewsDirectory, $layout, $model, $auxModels);
     }
 
-    public function index() {
+    public function index()
+    {
         header("Location: " . ABS_ROOT_URL);
     }
 
-    public function add() {
-        if($_POST) {
-            if($this->model->insert(array(
+    public function add()
+    {
+        if ($_POST) {
+            if ($this->model->insert(array(
                 "title" => $_POST["title"],
-                "text"=>$_POST["text"],
+                "text" => $_POST["text"],
                 "tag" => $_POST["tag"],
-                "category"=>$_POST["category"],
-            ))) {
+                "category" => $_POST["category"],
+            ))
+            ) {
                 $_SESSION["messages"][] = array(1, "success", "Successfully added new question!");
                 header("Location: " . ABS_ROOT_URL);
             } else {
@@ -32,7 +35,8 @@ class QuestionsController extends BaseController {
         require_once $this->layout;
     }
 
-    public function view() {
+    public function view()
+    {
         $questions = $this->model->getAll();
         $templateFileName = ROOT_DIR . $this->viewsDirectory . "view.php";
         $pageTitle = "View All Questions";
