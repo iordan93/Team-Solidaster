@@ -1,10 +1,10 @@
 <?php foreach ($questions as $question) {
-    var_dump($question)
+//    var_dump($question)
     ?>
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <a href="<?= ABS_ROOT_URL ?>questions/details/<?= $question['id'] ?>">
-                        <h3><?= $question['title'] ?></h3>
+                        <h4><?= $question['title'] ?></h4>
                     </a>
 
                 </div>
