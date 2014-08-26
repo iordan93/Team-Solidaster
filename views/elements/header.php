@@ -11,7 +11,7 @@
     <script src="<?= ABS_ROOT_URL ?>scripts/app.js"></script>
 </head>
 <body>
-<header>
+<header id="header">
     <div class="navbar navbar-inverse">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
