@@ -1,10 +1,10 @@
 <?php foreach ($questions as $question) {
-//    var_dump($question)
+    var_dump($question)
     ?>
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <a href="<?= ABS_ROOT_URL ?>questions/details/<?= $question['id'] ?>">
-                        <h4><?= $question['title'] ?></h4>
+                        <h3><?= $question['title'] ?></h3>
                     </a>
 
                 </div>
@@ -18,9 +18,9 @@
                     </div>
                     <hr/>
                     <div>
-<!--                        <div>-->
-<!--                            <form>vote!!!!!</form>-->
-<!--                        </div>-->
+                        <!--                        <div>-->
+                        <!--                            <form>vote!!!!!</form>-->
+                        <!--                        </div>-->
                         <div>
                             <span class="glyphicon glyphicon-ok"></span><?= $question['vote_result']?>
                             &nbsp;&nbsp;
@@ -31,6 +31,6 @@
                     </div>
                 </div>
             </div>
-    <?php
-    }
-    ?>
+<?php
+}
+?>
