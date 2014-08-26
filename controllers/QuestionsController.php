@@ -41,4 +41,12 @@ class QuestionsController extends BaseController
         $pageTitle = "Add new question";
         require_once $this->layout;
     }
+
+    public function count() {
+        $count = $this->model->getAll(array(
+            "columns"=>"count(*)"
+        ));
+
+        return intval($count[0]["count(*)"]);
+    }
 } 
