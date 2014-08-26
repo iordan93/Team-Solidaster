@@ -5,5 +5,5 @@
             <?php require_once $templateFileName; ?>
         </main>
         <?php require_once realpath("views/elements/sidebar.php"); ?>
-        <?php require_once realpath("views/elements/footer.php"); ?>
     </div>
+<?php require_once realpath("views/elements/footer.php"); ?>
