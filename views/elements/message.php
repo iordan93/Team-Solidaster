@@ -21,4 +21,3 @@ if (!empty($_SESSION)) {
         $_SESSION["messages"] = $newMessages;
     }
 }
-?>

@@ -1,22 +1,26 @@
 <?php
 namespace Controllers;
 
-class CategoriesController extends BaseController {
-    public function __construct($viewsDirectory = "", $layout = "", $model = "category", $auxModels = array())
+class CategoriesController extends BaseController
+{
+    public function __construct($viewsDirectory = "", $layout = "", $model = "category", $auxModels = array("question"))
     {
         parent::__construct($viewsDirectory, $layout, $model, $auxModels);
     }
 
-    public function index() {
+    public function index()
+    {
         header("Location: " . ABS_ROOT_URL);
     }
 
-    public function add() {
-        if($_POST) {
-            if($this->model->insert(array(
+    public function add()
+    {
+        if ($_POST) {
+            if ($this->model->insert(array(
                 "name" => $_POST["catName"],
                 "description" => $_POST["catDescription"]
-            ))) {
+            ))
+            ) {
                 $_SESSION["messages"][] = array(1, "success", "New category successfully added.");
                 header("Location: " . ABS_ROOT_URL);
             } else {
@@ -29,10 +33,22 @@ class CategoriesController extends BaseController {
         require_once $this->layout;
     }
 
-    public function view() {
-        $categories = $this->model->getAll();
+    public function all()
+    {
+        $categories = $this->model->getCounts();
+        $title = "Categories";
+        return array("title" => $title, "categories" => $categories);
+    }
+
+    public function view($id)
+    {
+        $category = $this->model->getById($id);
+        $questions = $this->auxModels[0]->getAll(array(
+            "where" => "category_id = {$id}"
+        ));
+
         $templateFileName = ROOT_DIR . $this->viewsDirectory . "view.php";
-        $pageTitle = "Add category";
+        $pageTitle = "Category \"{$category["name"]}\"";
         require_once $this->layout;
     }
 } 

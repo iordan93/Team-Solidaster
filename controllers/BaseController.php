@@ -32,7 +32,7 @@ abstract class BaseController
 
         if (is_array($auxModels)) {
             foreach ($auxModels as $model) {
-                $this->loadModelFile($model);
+                $this->auxModels[] = $this->loadModelFile($model);
             }
         }
 

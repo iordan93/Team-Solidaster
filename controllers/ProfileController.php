@@ -19,23 +19,27 @@ class ProfileController extends BaseController
     {
         $auth = Auth::getInstance();
         $messages = array();
-        if ($_POST) {
+        if ($_POST && !Auth::isAuthenticated()) {
             $oldUser = $this->model->getAll(array(
-                "where" => "username = '{$_POST["username"]}'"
+                "where" => "username = '" . $this->model->dbConnection->real_escape_string($_POST["username"]) . "'"
             ));
             if (!empty($oldUser)) {
                 $messages[] = array(1, "danger", "A user with this username already exists.");
             } else {
-                $user = array(
-                    "username" => $_POST["username"],
-                    "password" => $_POST["password"],
-                    "email" => isset($_POST["email"]) ? $_POST["email"] : ""
-                );
+                if (!isset($_POST["confirmPassword"]) || $_POST["password"] != $_POST["confirmPassword"]) {
+                    $messages[] = array(1, "danger", "The passwords do not match.");
+                } else {
+                    $user = array(
+                        "username" => $_POST["username"],
+                        "password" => $_POST["password"],
+                        "email" => isset($_POST["email"]) ? $_POST["email"] : ""
+                    );
 
-                $auth->register($user["username"], $user["password"], $user["email"], "user");
-                $auth->login($user["username"], $user["password"]);
-                $messages[] = array(1, "success", "User registered successfully.");
-                header("Location: " . ABS_ROOT_URL);
+                    $auth->register($user["username"], $user["password"], $user["email"], "user");
+                    $auth->login($user["username"], $user["password"]);
+                    $messages[] = array(1, "success", "You have registered successfully.");
+                    header("Location: " . ABS_ROOT_URL);
+                }
             }
         }
 
@@ -43,5 +47,37 @@ class ProfileController extends BaseController
         $pageTitle = "Register";
         $_SESSION["messages"] = $messages;
         require_once $this->layout;
+    }
+
+    public function login()
+    {
+        $auth = Auth::getInstance();
+        $messages = array();
+        if ($_POST && !Auth::isAuthenticated()) {
+            $username = $this->model->dbConnection->real_escape_string($_POST["loginUsername"]);
+            $password = $this->model->dbConnection->real_escape_string($_POST["loginPassword"]);
+            $user = $this->model->getAll(array(
+                "where" => "username = '{$username}'"
+            ));
+
+            if (empty($user)) {
+                $messages[] = array(1, "danger", "The username or password is invalid.");
+            } else {
+                $auth->login($username, $password);
+                $messages[] = array(1, "success", "You have successfully logged in.");
+            }
+        }
+
+        $_SESSION["messages"] = $messages;
+        header("Location: " . ABS_ROOT_URL);
+    }
+
+    public function logout()
+    {
+        $auth = Auth::getInstance();
+        if ($auth->isAuthenticated()) {
+            $auth->logout();
+            header("Location: " . ABS_ROOT_URL);
+        }
     }
 } 

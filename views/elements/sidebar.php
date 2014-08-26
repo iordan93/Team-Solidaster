@@ -1,13 +1,20 @@
+<?php
+include_once "controllers/CategoriesController.php";
+$controller = new \Controllers\CategoriesController();
+$model = $controller->all();
+?>
+
 <aside id="sidebar-home" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
     <div class="sidebar">
         <header>
-            <h3>Sidebar Title</h3>
+            <h3><?= $model["title"] ?></h3>
         </header>
         <main>
             <ul class="list-group">
                 <?php
-                for ($i = 1; $i <= 5; $i++) {
-                    echo "<li class=\"list-group-item\"><span class='badge'>{$i}</span><a href=\"#\">List item</a></li>";
+                foreach ($model["categories"] as $category) {
+                    echo "<li class=\"list-group-item\"><span class='badge'>{$category["questions_count"]}</span>" .
+                        "<a href=\"" . ABS_ROOT_URL . "categories/view/{$category["id"]}\">{$category["name"]}</a></li>";
                 }
                 ?>
             </ul>

@@ -40,12 +40,8 @@ abstract class BaseModel
 
     public function getById($id, $arguments = array())
     {
-        if (is_int($id)) {
             $arguments = array_merge($arguments, array("where" => "id = {$id}"));
-            return $this->getAll($arguments);
-        } else {
-            return false;
-        }
+            return $this->getAll($arguments)[0];
     }
 
     public function insert($arguments)
@@ -154,7 +150,7 @@ abstract class BaseModel
         return array_merge($defaultArguments, $arguments);
     }
 
-    private static function processResults($resultSet)
+    protected static function processResults($resultSet)
     {
         $results = array();
         if (!empty($resultSet) && $resultSet->num_rows > 0) {
