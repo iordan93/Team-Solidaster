@@ -1,6 +1,8 @@
 <?php
 namespace Controllers;
 
+use Lib\Auth;
+
 class HomeController extends BaseController
 {
     public function __construct($viewsDirectory = "", $layout = "", $model = "question", $auxModels = array("category", "answer"))

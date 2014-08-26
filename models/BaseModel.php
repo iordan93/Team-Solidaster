@@ -54,7 +54,7 @@ abstract class BaseModel
 
         $query = "insert into {$this->table} ({$keys}) values ({$values})";
         $this->dbConnection->query($query);
-        return $this->dbConnection->affected_rows;
+        return $this->dbConnection->insert_id;
     }
 
     public function update($arguments, $escape = false)
