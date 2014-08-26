@@ -13,11 +13,12 @@ $model = $controller->all();
             <ul class="list-group">
                 <?php
                 foreach ($model["categories"] as $category) {
+
                     echo "<li class=\"list-group-item\"><span class='badge'>{$category["questions_count"]}</span>" .
                         "<a href=\"" . ABS_ROOT_URL . "categories/view/{$category["id"]}\">{$category["name"]}</a></li>";
                 }
                 ?>
-                    <li class="list-group-item"><a href="<?=ABS_ROOT_URL ."categories/add"?>">Add Category !!!!!</a></li>
+                    <a href="<?=ABS_ROOT_URL ."categories/add"?>" class="list-group-item">Add Category<span class="glyphicon glyphicon-plus"></span></a>
             </ul>
         </main>
     </div>

@@ -6,8 +6,10 @@
     height:80%;
     padding-top: 80px;
 }
+header .form-control{
+    margin-right: 10px;
+}
 footer {
-
     bottom:0;
     width:100%;
     height:60px;   /* Height of the footer */
@@ -18,9 +20,25 @@ footer {
     width: 100%;
     z-index: 100;
 }
-.footer{
+.footer,.footer a,.list-group-item span a{
     margin: auto;
     text-align: center;
     padding-top: 20px;
     color: #FFFFFF;
+    text-decoration: none;
+}
+.sidebar a{
+    color:#18BC9C;
+}
+.sidebar a:hover{
+    color:#18BC9C;
+}
+
+.sidebar li:hover{
+    background-color: #ECF0F1;
+    cursor: pointer;
+}
+.glyphicon-plus{
+    display: block;
+    float: right;
 }
