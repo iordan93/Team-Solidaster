@@ -32,7 +32,7 @@
                 </ul>
 
             <?php else: ?>
-                <form class="navbar-form navbar-left" method="post" action="profile/login">
+                <form class="navbar-form navbar-left" method="post" action="<?= ABS_ROOT_URL ?>profile/login">
                     <input type="text" name="loginUsername" required class="form-control col-lg-8" placeholder="Username">
                     <input type="password" name="loginPassword" required class="form-control col-lg-8" placeholder="Password">
                     <input class="btn btn-primary" type="submit" name="commit" value="Login">
