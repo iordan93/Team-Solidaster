@@ -42,3 +42,34 @@ footer {
     display: block;
     float: right;
 }
+.rotate1 {
+    -webkit-transform: rotate(-20deg);
+    -moz-transform: rotate(-20deg);
+    -ms-transform: rotate(-20deg);
+    -o-transform: rotate(-20deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    padding-top: 0px;
+    position: absolute;
+    right: 105px;
+
+}
+.rotate2 {
+    -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    padding-top: 0px;
+    position: absolute;
+    left: -40px;
+}
+.logo{
+    min-width: 246px;
+    position:relative;
+
+}
+.dis{
+    position: absolute;
+    left: 32px;
+    top: -9px;
+}

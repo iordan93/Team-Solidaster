@@ -21,7 +21,13 @@
             </button>
         </div>
         <div class="navbar-collapse collapse navbar-inverse-collapse">
-            <a class="navbar-brand" href="<?=ABS_ROOT_URL ."home/index"?>">SOLID(is)ASTER</a>
+            <a class="navbar-brand" href="<?=ABS_ROOT_URL ."home/index"?>">
+                <div class="clearfix logo">
+                    <span class="navbar-brand rotate2">SOLID</span>
+                    <span class="dis">(dis)</span>
+                    <span class="navbar-brand rotate1">ASTER</span>
+                </div>
+            </a>
             <?php
             $auth = \Lib\Auth::getInstance();
             if ($auth->isAuthenticated()): ?>
