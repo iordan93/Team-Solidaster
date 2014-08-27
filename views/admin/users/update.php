@@ -18,15 +18,15 @@
             <div class="form-group">
                 <label for="role" class="col-lg-2 control-label">Role</label>
                 <div class="col-lg-10">
-                    <select>
-                        <option value="admin" selected="<?= $user["role"] == "user" ? "selected" : "" ?>">User</option>
-                        <option value="admin" selected="<?= $user["role"] == "admin" ? "selected" : "" ?>">Admin</option>
+                    <select class="form-control" name="role">
+                        <option value="admin" <?= $user["role"] == "admin" ? "selected" : "" ?>>Admin</option>
+                        <option value="user" <?= $user["role"] == "user" ? "selected" : "" ?>>User</option>
                     </select>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-lg-10 col-lg-offset-2">
-                    <input type="submit" class="btn btn-primary" value="Edit category"/>
+                    <input type="submit" class="btn btn-primary" value="Edit user"/>
                 </div>
             </div>
         </fieldset>

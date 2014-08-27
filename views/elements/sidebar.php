@@ -20,8 +20,6 @@ $model = $controller->all();
                         echo "<a class=\"list-group-item\" href=\"" . ABS_ROOT_URL . "categories/view/{$category["id"]}\"><span class='badge'>{$category["questions_count"]}</span>{$category["name"]}</a>";
                     }
                     ?>
-                    <a href="<?= ABS_ROOT_URL . "categories/add" ?>" class="list-group-item">Add Category<span
-                            class="glyphicon glyphicon-plus"></span></a>
                 </ul>
                 <a class="btn btn-danger btn-lg" style="color: #ffffff !important" href="<?= ABS_ADMIN_ROOT_URL ?>">Danger zone</a>
             <?php else: ?>
