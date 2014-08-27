@@ -87,6 +87,18 @@
                 <span class="glyphicon glyphicon-time"></span>
                 <span class="label label-default"><?= $answer['time_created'] ?></span>
             </span>
+                <!--                add comment icon here!!!-->
+                <?php
+                if ($auth->isAuthenticated()) : ?>
+
+                    <a href="<?= ABS_ROOT_URL ?>comments/add/<?= $answer['id'] ?>" class="btn btn-link">
+                                        <span class="text-danger">
+                                            <span class="glyphicon glyphicon-comment"></span>
+                                            <span class="label label-danger">Add comment!</span>
+                                        </span>
+                    </a>
+                <?php endif; ?>
+                <!--                add comment icon here!!!-->
             </div>
             <?php
             if (count($answer['comments']) > 0):
@@ -99,8 +111,6 @@
                                 <span class="glyphicon glyphicon-user"></span>
                                 <span><strong><?= htmlentities($comment['username']) ?></strong></span>
                                 <span><em> answered:</em></span>
-
-
                             </div>
                             <div class="panel-body">
                                 <?php echo(htmlentities($comment['text']));
@@ -109,21 +119,6 @@
                                     <span class="glyphicon glyphicon-time"></span>
                                     <span class="label label-default"><?= $comment['time_created'] ?></span>
                                 </div>
-
-<!--!!!!!-->
-                                <?php
-                                var_dump($answer);
-                                $auth = \Lib\Auth::getInstance();
-                                if ($auth->isAuthenticated()) : ?>
-
-                                    <a href="<?= ABS_ROOT_URL ?>comments/add/<?= $answer['id'] ?>" class="btn btn-link">
-                                        <span class="text-danger">
-                                            <span class="glyphicon glyphicon-comment"></span>
-                                            <span class="label label-danger">Add answer!</span>
-                                        </span>
-                                    </a>
-                                <?php endif; ?>
-
                             </div>
                         </div>
                     </div>
@@ -132,13 +127,8 @@
                 endforeach;
             endif;
             ?>
-
         </div>
 
     <?php endforeach;
-
-
     ?>
 </main>
-<?php
-//var_dump($question['answers']);
