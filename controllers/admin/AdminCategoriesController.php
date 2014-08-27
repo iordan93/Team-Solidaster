@@ -23,7 +23,7 @@ class AdminCategoriesController extends BaseAdminController
                 "description" => $_POST["catDescription"]
             ))
             ) {
-                $_SESSION["messages"][] = array(1, "success", "New category successfully added.");
+                $_SESSION["messages"][] = array(2, "success", "New category successfully added.");
                 header("Location: " . ABS_ADMIN_ROOT_URL);
             } else {
                 $_SESSION["messages"][] = array(1, "danger", "Error creating new category.");
