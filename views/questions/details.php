@@ -3,9 +3,12 @@
         <div class="panel-heading">
             <h3 class="panel-title">
                 <span class="glyphicon glyphicon-user"></span>
-                <span><strong> <?= $question['question'][0]['author'] ?></strong></span>
+<!--                --><?//=var_dump($question['question']) ?>
+                <a href="<?= ABS_ROOT_URL ?>profile/show/<?= $question['question'][0]['user_id'] ?>">
+                    <span><strong> <?= htmlentities($question['question'][0]['author']) ?></strong></span></a>
+
             <span><em> asked:
-                    <?= $question['question'][0]['title'] ?>
+                    <?= htmlentities($question['question'][0]['title']) ?>
                 </em></span>
             </h3>
         </div>
@@ -20,7 +23,7 @@
             &nbsp;
         <span class="text-primary">
             <span class="glyphicon glyphicon-book"></span>
-            <span class="label label-primary"><?= $question['question'][0]['category'] ?></span>
+            <span class="label label-primary"><?= htmlentities($question['question'][0]['category']) ?></span>
         </span>
             &nbsp;
             <!--        to-be removed-->
@@ -45,7 +48,7 @@
             <span>
                 <?php
                 foreach ($question['tags'] as $tag) : ?>
-                    <span class="label label-info"><?= $tag['name'] ?></span>
+                    <span class="label label-info"><?= htmlentities($tag['name']) ?></span>
                 <?php
                 endforeach ?>
             </span>
@@ -57,9 +60,11 @@
         <div class="panel panel-success">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    <span class="glyphicon glyphicon-user"></span>
-                    <span><strong><?= $answer['username'] ?></strong></span>
-                    <span><em> answered:</em></span>
+                    <a href="<?= ABS_ROOT_URL ?>profile/show/<?= $answer['user_id'] ?>">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <span><strong><?= htmlentities($answer['username']) ?></strong></span>
+                        <span><em> answered:</em></span>
+                    </a>
                 </h3>
             </div>
 
@@ -72,6 +77,43 @@
                 <span class="label label-default"><?= $answer['time_created'] ?></span>
             </span>
             </div>
+            <?php
+            if (count($answer['comments']) > 0):
+                echo('&nbsp');
+                foreach ($answer['comments'] as $comment) : ?>
+
+                    <div class="col-sm-12">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <span class="glyphicon glyphicon-user"></span>
+                                <span><strong><?= htmlentities($comment['username']) ?></strong></span>
+                                <span><em> answered:</em></span>
+
+
+                            </div>
+                            <div class="panel-body">
+                                <?php echo(htmlentities($comment['text']));
+                                ?>
+                                <div class="text-muted">
+                                    <span class="glyphicon glyphicon-time"></span>
+                                    <span class="label label-default"><?= $comment['time_created'] ?></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<!--                    --><?php //var_dump($comment);?>
+                    <div class="clearfix"></div>
+                <?php
+                endforeach;
+            endif;
+            ?>
+
         </div>
-    <?php endforeach; ?>
+
+    <?php endforeach;
+
+
+    ?>
 </main>
+<?php
+//var_dump($question['answers']);
