@@ -21,5 +21,17 @@
             </ul>
         </main>
     </div>
+
+    <div class="sidebar">
+        <header>
+            <h3>Tags</h3>
+        </header>
+        <main>
+            <ul class="list-group">
+                <li class="list-group-item"><a href="<?= ABS_ADMIN_ROOT_URL ?>tags/add">Add tag</a></li>
+                <li class="list-group-item"><a href="<?= ABS_ADMIN_ROOT_URL ?>tags/edit">Edit tag</a></li>
+            </ul>
+        </main>
+    </div>
 </aside>
 <div class="clearfix"></div>
