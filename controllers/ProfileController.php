@@ -91,7 +91,7 @@ class ProfileController extends BaseController
             $questions = $this->auxModels[0]->getAll(array(
                 "where" => "user_id = {$id}"
             ));
-            $answers = $this->auxModels[1]->getAnswersWithCategories($id);
+            $answers = $this->auxModels[1]->getWithCategoriesByUser($id);
             $comments = $this->auxModels[2]->getAll(array(
                 "where" => "user_id = {$id}"
             ));
