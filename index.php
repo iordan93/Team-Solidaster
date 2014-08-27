@@ -19,13 +19,21 @@ define("ABS_ROOT_URL", ROOT_URL . DS .ROOT_PATH);
 $request = $_SERVER["REQUEST_URI"];
 if (strpos($request, REQUEST_HOME) === 0) {
     $request = substr($request, strlen(REQUEST_HOME));
+    $adminRouting = false;
+    if(startsWith($request, "admin/")) {
+        $adminRouting = true;
+        include_once "controllers/BaseController.php";
+        include_once "controllers/admin/BaseAdminController.php";
+        $request = substr($request, strlen("admin/"));
+    }
+
     $parts = explode("/", $request, 3);
 
     $controller = "home";
     $action = "index";
     $parameters = array();
 
-    if (isset($parts[0])) {
+    if (isset($parts[0]) && !empty($parts[0])) {
         $controller = strtolower($parts[0]);
     }
 
@@ -39,12 +47,16 @@ if (strpos($request, REQUEST_HOME) === 0) {
     }
 
     include_once "controllers/BaseController.php";
+    include_once "controllers/admin/BaseAdminController.php";
+    include_once "controllers/admin/AdminHomeController.php";
     include_once "models/BaseModel.php";
 
     $controllerFileName = "controllers/" . ucfirst($controller) . "Controller.php";
     if (file_exists($controllerFileName)) {
         include_once $controllerFileName;
-        $controllerClass = "\\Controllers\\" . ucfirst($controller) . "Controller";
+        $adminNamespace = $adminRouting ? "\\Admin" : "";
+        $adminPrefix = $adminRouting ? "Admin" : "";
+        $controllerClass = $adminNamespace . "\\Controllers\\" . $adminPrefix .ucfirst($controller) . "Controller";
         $controllerInstance = new $controllerClass();
 
         if (method_exists($controllerInstance, $action)) {

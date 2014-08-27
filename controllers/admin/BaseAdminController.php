@@ -1,7 +1,9 @@
 <?php
-namespace Controllers;
+namespace Admin\Controllers;
 
-abstract class BaseController
+use Controllers\BaseController;
+
+abstract class BaseAdminController extends BaseController
 {
     public $layout;
     public $viewsDirectory;
@@ -11,14 +13,15 @@ abstract class BaseController
     public function __construct($viewsDirectory = "", $layout = "", $model = "", $auxModels = array())
     {
         if (empty($layout)) {
-            $layout = ROOT_DIR . "views/shared/layout.php";
+            $layout = ROOT_DIR . "views/shared/adminLayout.php";
         }
 
         $classParts = explode("\\", get_called_class());
         $className = $classParts[count($classParts) - 1];
         $className = mb_strtolower(substr($className, 0, strpos($className, CONTROLLER_SUFFIX)));
+        $className = substr($className, strlen("admin"));
         if (empty($viewsDirectory)) {
-            $viewsDirectory = "views/{$className}/";
+            $viewsDirectory = "views/admin/{$className}/";
         }
 
         require_once "models/BaseModel.php";
