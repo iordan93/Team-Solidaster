@@ -31,6 +31,7 @@ join users as u
 on q.user_id = u.id
 where q.id = {$id}";
         $question = self::processResults($this->dbConnection->query($query));
+
         $query = "select tags.name from (select q.id, t.name
 from questions as q
 left outer join questions_tags as qt
@@ -41,7 +42,7 @@ where q.id = {$id}
 order by q.id) as tags";
         $tags = self::processResults($this->dbConnection->query($query));
 
-        $query = "select a.id, a.text, a.time_created, u.username
+        $query = "select a.id, a.text, a.time_created, u.username, u.id as user_id
 from answers as a
 join users as u
 on a.users_id = u.id

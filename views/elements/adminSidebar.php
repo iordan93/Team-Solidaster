@@ -13,12 +13,11 @@
 
     <div class="sidebar">
         <header>
-            <h3>Questions</h3>
+            <h3>Users</h3>
         </header>
         <main>
             <ul class="list-group">
-                <li class="list-group-item"><a href="#">Add category</a></li>
-                <li class="list-group-item"><a href="#">Edit category</a></li>
+                <li class="list-group-item"><a href="<?= ABS_ADMIN_ROOT_URL ?>users/edit">Edit user</a></li>
             </ul>
         </main>
     </div>
