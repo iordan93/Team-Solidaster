@@ -31,7 +31,7 @@
                 <div class="panel-body">
                     <p class="text-info"><?php
                         echo substr($question['text'], 0, 100);
-                        if (strlen($question['text'])):
+                        if (strlen($question['text']) > 100):
                             echo "...";
                         endif;
                         ?>

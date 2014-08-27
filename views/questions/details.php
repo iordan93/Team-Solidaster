@@ -10,7 +10,7 @@
             </h3>
         </div>
         <div class="panel-body">
-            <?= $question['question'][0]['text'] ?>
+            <?= str_replace(PHP_EOL, "<br />", $question['question'][0]['text']) ?>
         </div>
         <div class="panel-footer">
         <span class="text-muted">
@@ -64,7 +64,7 @@
             </div>
 
             <div class="panel-body">
-                <?= $answer['text'] ?>
+                <?= str_replace(PHP_EOL, "<br/ >", $answer['text']) ?>
             </div>
             <div class="panel-footer">
             <span class="text-muted">
