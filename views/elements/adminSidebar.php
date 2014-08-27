@@ -5,8 +5,8 @@
         </header>
         <main>
             <ul class="list-group">
-                <li class="list-group-item"><a href="#">Add category</a></li>
-                <li class="list-group-item"><a href="#">Edit category</a></li>
+                <li class="list-group-item"><a href="<?= ABS_ADMIN_ROOT_URL ?>categories/add">Add category</a></li>
+                <li class="list-group-item"><a href="<?= ABS_ADMIN_ROOT_URL ?>categories/edit">Edit category</a></li>
             </ul>
         </main>
     </div>

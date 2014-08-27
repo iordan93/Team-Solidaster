@@ -15,6 +15,7 @@ define("ROOT_PATH", basename(dirname(__FILE__)) . DS);
 define("REQUEST_HOME", DS . ROOT_PATH);
 define("ROOT_URL", "http://" . $_SERVER['HTTP_HOST']);
 define("ABS_ROOT_URL", ROOT_URL . DS .ROOT_PATH);
+define("ABS_ADMIN_ROOT_URL", ABS_ROOT_URL . "admin/");
 
 $request = $_SERVER["REQUEST_URI"];
 if (strpos($request, REQUEST_HOME) === 0) {
@@ -56,6 +57,11 @@ if (strpos($request, REQUEST_HOME) === 0) {
         include_once $controllerFileName;
         $adminNamespace = $adminRouting ? "\\Admin" : "";
         $adminPrefix = $adminRouting ? "Admin" : "";
+        if($adminRouting) {
+            $controllerFileName = "controllers/admin/Admin" . ucfirst($controller) . "Controller.php";
+        }
+
+        include_once $controllerFileName;
         $controllerClass = $adminNamespace . "\\Controllers\\" . $adminPrefix .ucfirst($controller) . "Controller";
         $controllerInstance = new $controllerClass();
 

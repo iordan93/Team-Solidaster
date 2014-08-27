@@ -2,6 +2,7 @@
 namespace Admin\Controllers;
 
 use Controllers\BaseController;
+use Lib\Auth;
 
 abstract class BaseAdminController extends BaseController
 {
@@ -12,6 +13,12 @@ abstract class BaseAdminController extends BaseController
 
     public function __construct($viewsDirectory = "", $layout = "", $model = "", $auxModels = array())
     {
+        $auth = Auth::getInstance();
+        if(!$auth->isAuthenticated() || !$auth->isAdmin()) {
+            $_SESSION["messages"][] = array(1, "danger", "You do not have access to this area.");
+            header("Location: " . ABS_ROOT_URL);
+        }
+
         if (empty($layout)) {
             $layout = ROOT_DIR . "views/shared/adminLayout.php";
         }

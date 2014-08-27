@@ -8,7 +8,7 @@ class AdminHomeController extends BaseAdminController {
 
     public function index() {
         $templateFileName = ROOT_DIR . $this->viewsDirectory . "index.php";
-        $pageTitle = "Question Details";
+        $pageTitle = "Administration";
         require_once $this->layout;
     }
 } 

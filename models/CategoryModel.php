@@ -10,7 +10,7 @@ class CategoryModel extends BaseModel {
     }
 
     public function getCounts() {
-        $query = "SELECT categories.id, categories.name, COUNT(questions.id) AS questions_count FROM questions	LEFT JOIN categories ON questions.category_id = categories.id GROUP BY categories.id";
+        $query = "select categories.id, categories.name, count(questions.id) as questions_count from questions	left join categories on questions.category_id = categories.id group by categories.id";
         $resultSet = $this->dbConnection->query($query);
         return self::processResults($resultSet);
     }

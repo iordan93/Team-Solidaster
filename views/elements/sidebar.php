@@ -13,24 +13,26 @@ $model = $controller->all();
             <?php
             $auth = \Lib\Auth::getInstance();
             if ($auth->isAdmin()): ?>
-            <ul class="list-group">
-                <?php
-                foreach ($model["categories"] as $category) {
+                <ul class="list-group">
+                    <?php
+                    foreach ($model["categories"] as $category) {
 
-                    echo "<a class=\"list-group-item\" href=\"" . ABS_ROOT_URL . "categories/view/{$category["id"]}\"><span class='badge'>{$category["questions_count"]}</span>{$category["name"]}</a>";
-                }
-                ?>
-                    <a href="<?=ABS_ROOT_URL ."categories/add"?>" class="list-group-item">Add Category<span class="glyphicon glyphicon-plus"></span></a>
-            </ul>
+                        echo "<a class=\"list-group-item\" href=\"" . ABS_ROOT_URL . "categories/view/{$category["id"]}\"><span class='badge'>{$category["questions_count"]}</span>{$category["name"]}</a>";
+                    }
+                    ?>
+                    <a href="<?= ABS_ROOT_URL . "categories/add" ?>" class="list-group-item">Add Category<span
+                            class="glyphicon glyphicon-plus"></span></a>
+                </ul>
+                <a class="btn btn-danger btn-lg" style="color: #ffffff !important" href="<?= ABS_ADMIN_ROOT_URL ?>">Danger zone</a>
             <?php else: ?>
-            <ul class="list-group">
-                <?php
-                foreach ($model["categories"] as $category) {
+                <ul class="list-group">
+                    <?php
+                    foreach ($model["categories"] as $category) {
 
-                    echo "<a class=\"list-group-item\" href=\"" . ABS_ROOT_URL . "categories/view/{$category["id"]}\"><span class='badge'>{$category["questions_count"]}</span>{$category["name"]}</a>";
-                }
-                ?>
-            </ul>
+                        echo "<a class=\"list-group-item\" href=\"" . ABS_ROOT_URL . "categories/view/{$category["id"]}\"><span class='badge'>{$category["questions_count"]}</span>{$category["name"]}</a>";
+                    }
+                    ?>
+                </ul>
             <?php endif; ?>
         </main>
     </div>
