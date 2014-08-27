@@ -8,7 +8,7 @@ if (!empty($_SESSION)) {
                 $lifetime = $message[0];
                 $type = $message[1];
                 $text = $message[2];
-                if ($lifetime >= 0) {
+                if ($lifetime > 0) {
                     echo "<div class=\"alert alert-dismissible alert-{$type}\">{$text}</div>";
                 }
 

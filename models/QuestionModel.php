@@ -41,19 +41,36 @@ where q.id = {$id}
 order by q.id) as tags";
         $tags = self::processResults($this->dbConnection->query($query));
 
-        $query = "select a.text, a.time_created, u.username
+        $query = "select a.id, a.text, a.time_created, u.username
 from answers as a
 join users as u
 on a.users_id = u.id
 where a.questions_id = {$id}";
         $answers = self::processResults($this->dbConnection->query($query));
+        $resultAnswers = array();
+        foreach ($answers as $answer) {
+            $query = "select c.id, c.text, c.time_created, c.answer_id, c.user_id, u.username
+from comments as c
+join users as u
+on c.user_id = u.id
+where c.answer_id = {$answer["id"]}";
+            $comments = self::processResults($this->dbConnection->query($query));
+            $resultAnswers[] = array(
+                "id" => $answer["id"],
+                "text" => $answer["text"],
+                "time_created" => $answer["time_created"],
+                "username" => $answer["username"],
+                "comments" => $comments
+            );
+        }
 
         $this->update(array("id" => $id, "times_viewed" => "times_viewed + 1"), false);
 
-        return array("question" => $question, "tags" => $tags, "answers" => $answers);
+        return array("question" => $question, "tags" => $tags, "answers" => $resultAnswers);
     }
 
-    public function getWithUsers($id) {
+    public function getWithUsers($id)
+    {
         $query = "select q.id, q.title, q.text, q.time_created, q.vote_result, q.times_viewed, u.username from questions as q join users as u on q.user_id = u.id where category_id = {$id}";
         return self::processResults($this->dbConnection->query($query));
     }
