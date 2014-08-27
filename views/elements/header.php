@@ -29,7 +29,7 @@ $count = intval($result[0]["count(*)"])
             </button>
         </div>
         <div class="navbar-collapse collapse navbar-inverse-collapse">
-            <a class="navbar-brand" href="<?= ABS_ROOT_URL . "home/index" ?>">
+            <a class="navbar-brand" href="<?=ABS_ROOT_URL ."home/index"?>">
                 <div class="clearfix logo">
                     <span class="navbar-brand rotate2">SOLID</span>
                     <span class="dis">(dis)</span>
@@ -40,24 +40,18 @@ $count = intval($result[0]["count(*)"])
             $auth = \Lib\Auth::getInstance();
             if ($auth->isAuthenticated()): ?>
                 <ul class="nav nav-pills">
-                    <li class="active"><a href="<?= ABS_ROOT_URL . "questions/add" ?>">Add new question </a></li>
-                    <li class="active"><a href="<?= ABS_ROOT_URL . "home/index" ?>">Home <span
-                                class="badge"><?= $count ?></span></a></li>
-                    <li class="active"><a
-                            href="<?= ABS_ROOT_URL ?>profile/show/<?= $_SESSION[KEY_USER_ID] ?>">Hello, <?= $_SESSION[KEY_USERNAME] ?>
-                            !</a></li>
-                    <li class="active"><a href="<?= ABS_ROOT_URL ?>profile/logout">Logout <span
-                                class="glyphicon glyphicon-log-out"></a></span></li>
+                    <li class="active"><a href="<?=ABS_ROOT_URL ."questions/add"?>">Add new question </a></li>
+                    <li class="active"><a href="<?=ABS_ROOT_URL ."home/index"?>">Home <span class="badge"><?= $count ?></span></a></li>
+                    <li class="active"><a href="<?= ABS_ROOT_URL ?>profile/show/<?= $_SESSION[KEY_USER_ID] ?>">Hello, <?= $_SESSION[KEY_USERNAME] ?>!</a></li>
+                    <li class="active"><a href="<?= ABS_ROOT_URL ?>profile/logout">Logout <span class="glyphicon glyphicon-log-out"></a></span></li>
                 </ul>
 
             <?php else: ?>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <form class="navbar-form navbar-left" method="post" action="<?= ABS_ROOT_URL ?>profile/login">
-                            <input type="text" name="loginUsername" required class="form-control col-lg-8"
-                                   placeholder="Username">
-                            <input type="password" name="loginPassword" required class="form-control col-lg-8"
-                                   placeholder="Password">
+                            <input type="text" name="loginUsername" required class="form-control col-lg-8" placeholder="Username">
+                            <input type="password" name="loginPassword" required class="form-control col-lg-8" placeholder="Password">
                             <input class="btn btn-primary" type="submit" name="commit" value="Login">
                         </form>
                     </li>
