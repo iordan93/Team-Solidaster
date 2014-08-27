@@ -1,6 +1,7 @@
 #wrapper {
     max-width: 80%;
     margin: auto;
+    margin-bottom: 17.5%;
     overflow:auto;
     display:block;
     height:80%;
@@ -10,7 +11,7 @@ header .form-control{
     margin-right: 10px;
 }
 footer {
-    bottom:0;
+    bottom: 0;
     width:100%;
     height:60px;   /* Height of the footer */
     background-color: #18BC9C;
@@ -41,4 +42,35 @@ footer {
 .glyphicon-plus{
     display: block;
     float: right;
+}
+.rotate1 {
+    -webkit-transform: rotate(-20deg);
+    -moz-transform: rotate(-20deg);
+    -ms-transform: rotate(-20deg);
+    -o-transform: rotate(-20deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    padding-top: 0px;
+    position: absolute;
+    right: 105px;
+
+}
+.rotate2 {
+    -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    padding-top: 0px;
+    position: absolute;
+    left: -40px;
+}
+.logo{
+    min-width: 246px;
+    position:relative;
+
+}
+.dis{
+    position: absolute;
+    left: 32px;
+    top: -9px;
 }

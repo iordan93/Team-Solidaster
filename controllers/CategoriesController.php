@@ -43,9 +43,7 @@ class CategoriesController extends BaseController
     public function view($id)
     {
         $category = $this->model->getById($id);
-        $questions = $this->auxModels[0]->getAll(array(
-            "where" => "category_id = {$id}"
-        ));
+        $questions = $this->auxModels[0]->getWithUsers($id);
 
         $templateFileName = ROOT_DIR . $this->viewsDirectory . "view.php";
         $pageTitle = "Category \"{$category["name"]}\"";
