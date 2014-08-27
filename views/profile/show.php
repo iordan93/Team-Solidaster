@@ -36,7 +36,7 @@
     <ul class="nav nav-tabs">
         <li class="active"><a href="#home" data-toggle="tab">Questions</a></li>
         <li><a href="#profile" data-toggle="tab">Answers</a></li>
-        <li class="disabled"><a>Disabled</a></li>
+        <li class="disabled"><a>Comments</a></li>
     </ul>
     <div id="myTabContent" class="tab-content">
         <div class="tab-pane fade active in" id="home">

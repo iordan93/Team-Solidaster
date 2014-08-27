@@ -1,5 +1,6 @@
 <?php
 mb_internal_encoding("utf-8");
+date_default_timezone_set("Europe/Sofia");
 define("DEFAULT_COOKIE_LIFETIME", 36000);
 session_set_cookie_params(DEFAULT_COOKIE_LIFETIME, "/");
 session_start();
