@@ -3,7 +3,7 @@
         <div class="panel-heading">
             <h3 class="panel-title">
                 <span class="glyphicon glyphicon-user"></span>
-<!--                --><?//=var_dump($question['question']) ?>
+                <!--                --><? //=var_dump($question['question']) ?>
                 <a href="<?= ABS_ROOT_URL ?>profile/show/<?= $question['question'][0]['user_id'] ?>">
                     <span><strong> <?= htmlentities($question['question'][0]['author']) ?></strong></span></a>
 
@@ -28,7 +28,7 @@
             &nbsp;
             <!--        to-be removed-->
             <!--        to-be removed-->
-         <span class="text-warning">
+        <span class="text-warning">
                 <span class="glyphicon glyphicon-plus-sign"></span>
         <span class="label label-warning"><?= $question['question'][0]['vote_result'] ?>
             <?php
@@ -39,8 +39,19 @@
             }
             ?>
         </span>
+            <?php
+            $auth = \Lib\Auth::getInstance();
+            if ($auth->isAuthenticated())
+                : ?>
 
-             </span>
+                <a href="<?= ABS_ROOT_URL ?>answers/add/<?= $question['question'][0]['id'] ?>" class="btn btn-link">
+                <span class="text-danger">
+                    <span class="glyphicon glyphicon-comment"></span>
+                    <span class="label label-danger">Add answer!</span>
+                </span>
+                </a>
+            <?php endif; ?>
+
             <!--        to-be removed-->
             <!--        to-be removed-->
             <p class="text-info">
@@ -98,10 +109,24 @@
                                     <span class="glyphicon glyphicon-time"></span>
                                     <span class="label label-default"><?= $comment['time_created'] ?></span>
                                 </div>
+
+<!--!!!!!-->
+                                <?php
+                                var_dump($answer);
+                                $auth = \Lib\Auth::getInstance();
+                                if ($auth->isAuthenticated()) : ?>
+
+                                    <a href="<?= ABS_ROOT_URL ?>comments/add/<?= $answer['id'] ?>" class="btn btn-link">
+                                        <span class="text-danger">
+                                            <span class="glyphicon glyphicon-comment"></span>
+                                            <span class="label label-danger">Add answer!</span>
+                                        </span>
+                                    </a>
+                                <?php endif; ?>
+
                             </div>
                         </div>
                     </div>
-<!--                    --><?php //var_dump($comment);?>
                     <div class="clearfix"></div>
                 <?php
                 endforeach;
