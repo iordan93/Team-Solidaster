@@ -16,7 +16,7 @@ class AdminTagsController extends BaseAdminController {
     public function add() {
         if ($_POST) {
             if ($this->model->insert(array(
-                "name" => $_POST["tagName"],
+                "name" => $_POST["tagName"]
             ))
             ) {
                 $_SESSION["messages"][] = array(2, "success", "New tag successfully added.");
