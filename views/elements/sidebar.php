@@ -17,8 +17,7 @@ $model = $controller->all();
                 <?php
                 foreach ($model["categories"] as $category) {
 
-                    echo "<li class=\"list-group-item\"><span class='badge'>{$category["questions_count"]}</span>" .
-                        "<a href=\"" . ABS_ROOT_URL . "categories/view/{$category["id"]}\">{$category["name"]}</a></li>";
+                    echo "<a class=\"list-group-item\" href=\"" . ABS_ROOT_URL . "categories/view/{$category["id"]}\"><span class='badge'>{$category["questions_count"]}</span>{$category["name"]}</a>";
                 }
                 ?>
                     <a href="<?=ABS_ROOT_URL ."categories/add"?>" class="list-group-item">Add Category<span class="glyphicon glyphicon-plus"></span></a>
@@ -28,8 +27,7 @@ $model = $controller->all();
                 <?php
                 foreach ($model["categories"] as $category) {
 
-                    echo "<li class=\"list-group-item\"><span class='badge'>{$category["questions_count"]}</span>" .
-                        "<a href=\"" . ABS_ROOT_URL . "categories/view/{$category["id"]}\">{$category["name"]}</a></li>";
+                    echo "<a class=\"list-group-item\" href=\"" . ABS_ROOT_URL . "categories/view/{$category["id"]}\"><span class='badge'>{$category["questions_count"]}</span>{$category["name"]}</a>";
                 }
                 ?>
             </ul>
