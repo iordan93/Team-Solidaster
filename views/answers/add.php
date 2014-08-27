@@ -1,7 +1,7 @@
 <form method="post">
     <fieldset>
         <legend>Add Answer:</legend>
-        <textarea rows="15" name="commentText" class="col-sm-11"></textarea>
+        <textarea rows="15" name="answerText" class="col-sm-11"></textarea>
     </fieldset>
     &nbsp;
 
