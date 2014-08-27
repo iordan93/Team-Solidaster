@@ -39,7 +39,7 @@ var_dump($comments);
         </div>
         <div class="tab-pane fade" id="profile">
             <?php foreach($answers as $answer) {
-            echo "<div><a href=\"" . ABS_ROOT_URL . "questions/details/{$questions['id']}\">{$answer["title"]}</a></div>";
+            echo "<div><a href=\"" . ABS_ROOT_URL . "questions/details/{$answer['questions_id']}\">{$answer["title"]}</a></div>";
             echo "<div>{$answer["text"]}</div>";
             } ?>
         </div>
