@@ -1,17 +1,27 @@
 <div class="well bs-component">
     <form method="post" class="form-horizontal">
         <fieldset>
-            <legend>Edit category</legend>
+            <legend>Edit user</legend>
+
             <div class="form-group">
-                <label for="catName" class="col-lg-2 control-label">Category name</label>
+                <label for="username" class="col-lg-2 control-label">Username</label>
                 <div class="col-lg-10">
-                    <input type="text" class="form-control" ID="catName" name='catName' value="<?= $category["name"] ?>" required>
+                    <input type="text" class="form-control" id="username" name='username' value="<?= $user["username"] ?>" required>
                 </div>
             </div>
             <div class="form-group">
-                <label for="catDescription" class="col-lg-2 control-label">Category description</label>
+                <label for="email" class="col-lg-2 control-label">Email</label>
                 <div class="col-lg-10">
-                    <input type="text" class="form-control" id="catDescription" name='catDescription' value="<?= $category["description"] ?>" required>
+                    <input type="email" class="form-control" id="email" name='email' value="<?= $user["email"] ?>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="role" class="col-lg-2 control-label">Role</label>
+                <div class="col-lg-10">
+                    <select>
+                        <option value="admin" selected="<?= $user["role"] == "user" ? "selected" : "" ?>">User</option>
+                        <option value="admin" selected="<?= $user["role"] == "admin" ? "selected" : "" ?>">Admin</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group">

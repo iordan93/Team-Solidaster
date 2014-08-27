@@ -1,6 +1,7 @@
 <?php
 mb_internal_encoding("utf-8");
-date_default_timezone_set("Europe/Sofia");
+header("Content-Type: text/html; charset=utf8");
+
 define("DEFAULT_COOKIE_LIFETIME", 36000);
 session_set_cookie_params(DEFAULT_COOKIE_LIFETIME, "/");
 session_start();
@@ -53,14 +54,13 @@ if (strpos($request, REQUEST_HOME) === 0) {
     include_once "models/BaseModel.php";
 
     $controllerFileName = "controllers/" . ucfirst($controller) . "Controller.php";
-    if (file_exists($controllerFileName)) {
-        include_once $controllerFileName;
-        $adminNamespace = $adminRouting ? "\\Admin" : "";
-        $adminPrefix = $adminRouting ? "Admin" : "";
-        if($adminRouting) {
-            $controllerFileName = "controllers/admin/Admin" . ucfirst($controller) . "Controller.php";
-        }
+    $adminNamespace = $adminRouting ? "\\Admin" : "";
+    $adminPrefix = $adminRouting ? "Admin" : "";
+    if($adminRouting) {
+        $controllerFileName = "controllers/admin/Admin" . ucfirst($controller) . "Controller.php";
+    }
 
+    if (file_exists($controllerFileName)) {
         include_once $controllerFileName;
         $controllerClass = $adminNamespace . "\\Controllers\\" . $adminPrefix .ucfirst($controller) . "Controller";
         $controllerInstance = new $controllerClass();

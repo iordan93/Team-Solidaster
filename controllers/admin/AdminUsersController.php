@@ -22,7 +22,6 @@ class AdminUsersController extends BaseAdminController {
 
         $users = $this->model->getAll();
         $templateFileName = ROOT_DIR . $this->viewsDirectory . "edit.php";
-        var_dump($templateFileName); die();
         $pageTitle = "Edit user";
         require_once $this->layout;
     }

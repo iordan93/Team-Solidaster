@@ -3,7 +3,6 @@
         <fieldset>
             <legend>Select a user to edit</legend>
             <div class="form-group">
-                <label for="user-id">Category name</label>
                 <select name="userId" id="user-id" class="form-control">
                     <?php
                     foreach ($users as $user) {

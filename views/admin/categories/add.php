@@ -5,7 +5,7 @@
             <div class="form-group">
                 <label for="catName" class="col-lg-2 control-label">Category name</label>
                 <div class="col-lg-10">
-                    <input type="text" class="form-control" ID="catName" name='catName' placeholder="Category name" required>
+                    <input type="text" class="form-control" id="catName" name='catName' placeholder="Category name" required>
                 </div>
             </div>
             <div class="form-group">

@@ -23,7 +23,7 @@ class QuestionModel extends BaseModel
 
     public function getDetailsDisplay($id)
     {
-        $query = "select q.title, q.text, q.time_created,q.vote_result, c.id as category_id, c.name as category, u.id as user_id, u.username as author
+        $query = "select q.id, q.title, q.text, q.time_created,q.vote_result, c.id as category_id, c.name as category, u.id as user_id, u.username as author
 from questions as q
 join categories as c
 on q.category_id = c.id
