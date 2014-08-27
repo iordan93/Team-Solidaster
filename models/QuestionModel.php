@@ -61,6 +61,7 @@ where c.answer_id = {$answer["id"]}";
                 "text" => $answer["text"],
                 "time_created" => $answer["time_created"],
                 "username" => $answer["username"],
+                "user_id" => $answer["user_id"],
                 "comments" => $comments
             );
         }
