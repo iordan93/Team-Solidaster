@@ -28,23 +28,25 @@ class AdminUsersController extends BaseAdminController {
 
     public function update($id) {
         if($_POST) {
-            $name = $_POST["catName"];
-            $description = $_POST["catDescription"];
+            $username = $_POST["username"];
+            $email = $_POST["email"];
+            $role = $_POST["role"];
 
             if($this->model->update(array(
                 "id" => $id,
-                "name" => $name,
-                "description" => $description
+                "username" => $username,
+                "email" => $email,
+                "role" => $role
             ), true)) {
-                $_SESSION["messages"][] = array(1, "success", "Category updated successfully.");
+                $_SESSION["messages"][] = array(1, "success", "User updated successfully.");
             } else {
-                $_SESSION["messages"][] = array(1, "danger", "Category was not updated. Please try again.");
+                $_SESSION["messages"][] = array(1, "danger", "User was not updated. Please try again.");
             }
         }
 
-        $category = $this->model->getById($id);
+        $user = $this->model->getById($id);
         $templateFileName = ROOT_DIR . $this->viewsDirectory . "update.php";
-        $pageTitle = "Edit category";
+        $pageTitle = "Edit user";
         require_once $this->layout;
     }
 } 
