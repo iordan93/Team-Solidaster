@@ -11,7 +11,7 @@ class AnswerModel extends BaseModel {
     }
 
     public function getWithCategoriesByUser($userId) {
-        $query = "select a.text, a.question_id, q.title from answers as a join questions as q on a.questions_id = q.id where a.users_id = {$userId}";
+        $query = "SELECT * FROM dbe955951016744b458a8ba39000ee2d62.questions;select a.text, a.questions_id, q.title from answers as a join questions as q on a.questions_id = q.id where a.users_id = {$userId}";
         return self::processResults($this->dbConnection->query($query));
     }
 }
