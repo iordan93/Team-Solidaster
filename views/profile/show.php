@@ -6,6 +6,33 @@
 ?>
 
 <div class="clearfix">
+    <div>
+        <?php
+        $auth = \Lib\Auth::getInstance();
+        if ($auth->isAdmin()): ?>
+            <h4>
+                <span class="glyphicon glyphicon-user"></span>
+                <?php echo $user['username'] ?>
+            </h4>
+            <h4>
+                <span class="glyphicon glyphicon-envelope"></span>
+                <?php echo $user['email'] ?>
+            </h4>
+            <h4>
+                <span class="glyphicon glyphicon-tower"></span>
+                <?php echo $user['role'] ?>
+            </h4>
+        <?php else: ?>
+            <h4>
+                <span class="glyphicon glyphicon-user"></span>
+                <?php echo $user['username'] ?>
+            </h4>
+            <h4>
+                <span class="glyphicon glyphicon-envelope"></span>
+                <?php echo $user['email'] ?>
+            </h4>
+        <?php endif; ?>
+    </div>
     <ul class="nav nav-tabs">
         <li class="active"><a href="#home" data-toggle="tab">Questions</a></li>
         <li><a href="#profile" data-toggle="tab">Answers</a></li>
